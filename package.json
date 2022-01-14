@@ -1,0 +1,26 @@
+{
+  "name": "duda",
+  "version": "1.0.0",
+  "description": "repo for practice",
+  "main": "index.js",
+  "devDependencies": {
+    "@babel/cli": "^7.16.8",
+    "@babel/core": "^7.16.7",
+    "@babel/preset-env": "^7.16.8",
+    "babel-jest": "^27.4.6",
+    "jest": "^27.4.7"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akaKAIN/duda.git"
+  },
+  "author": "akaKAIN",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/akaKAIN/duda/issues"
+  },
+  "homepage": "https://github.com/akaKAIN/duda#readme"
+}

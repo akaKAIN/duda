@@ -1,4 +1,4 @@
-import {literalCounter, popularLetter, textFormatLeft} from '../tasks/1.js'
+import {literalCounter, popularLetter, sum, textFormatLeft} from '../tasks/1.js'
 
 describe('task 1', () => {
   it('textFormatLeft: should return correct result', () => {

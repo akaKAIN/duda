@@ -1,50 +1,44 @@
-import {literalCounter, popularLetter, sum, textFormatLeft} from '../tasks/1.js'
+import {literalCounter, popularLetter, textFormatLeft} from '../tasks/1.js'
 
 describe('task 1', () => {
-  it('textFormatLeft: should return correct result', () => {
-    const testCases = [
-      {text: 'a', maxLen: 2, expected: ' a'},
-      {text: 'a', maxLen: 1, expected: 'a'},
-      {text: 'abb', maxLen: 4, expected: ' abb'},
-      {text: 'PingPong', maxLen: 4, expected: 'Pong'},
-      {text: 'PingPong', maxLen: 0, expected: ''},
-    ];
-    testCases.forEach(testCase => {
-      const result = textFormatLeft(testCase.text, testCase.maxLen);
-      expect(result).toEqual(testCase.expected);
-    });
+  it.each`
+  text | maxLen | expected
+  ${'a'} | ${2} | ${' a'}
+  ${'a'} | ${1} | ${'a'}
+  ${'abb'} | ${4} | ${' abb'}
+  ${'PingPong'} | ${4} | ${'Pong'}
+  ${'PingPong'} | ${0} | ${''}
+  `('textFormatLeft: should return correct result', async ({text, maxLen, expected}) => {
+    const result = textFormatLeft(text, maxLen);
+    expect(result).toEqual(expected);
   });
 
-  it('literalCounter: should return correct result', () => {
-    const testCases = [
-      {text: 'aaaa', letter: 'a', expected: 4},
-      {text: 'abab', letter: 'a', expected: 2},
-      {text: 'aaaaa', letter: '', expected: 0},
-      {text: '', letter: 'a', expected: 0},
-      {text: 'ыва', letter: '', expected: 0},
-      {text: '', letter: '', expected: 0},
-      {text: 'УУ уу уу', letter: ' ', expected: 2},
-    ];
-
-    testCases.forEach(testCase => {
-      const result = literalCounter(testCase.text, testCase.letter);
-      expect(result).toEqual(testCase.expected);
-    });
+  it.each`
+  text | letter | expected
+  ${'aaaa'} | ${'a'} | ${4}
+  ${'abab'} | ${'a'} | ${2}
+  ${'aaaa'} | ${''} | ${0}
+  ${''} | ${'a'} | ${0}
+  ${'sdf'} | ${''} | ${0}
+  ${''} | ${''} | ${0}
+  ${'УУ уу уу'} | ${' '} | ${2}
+  `('literalCounter: should return correct result', async ({text, letter, expected}) => {
+    const result = literalCounter(text, letter);
+    expect(result).toEqual(expected);
   });
 
-  it('popularLetter: should return correct result', () => {
-    const testCases = [
-      {text: 'aab', expected: 'a'},
-      {text: 'abbba', expected: 'b'},
-      {text: 'a  b  a', expected: ' '},
-      {text: 'aabb', expected: 'a'},
-      {text: '', expected: ''},
-      {text: 'cCbbaAa', expected: 'a'},
-      {text: 'Duda, da? DA!', expected: 'd'},
-    ];
-    testCases.forEach(testCase => {
-      const result = popularLetter(testCase.text);
-      expect(result).toEqual(testCase.expected);
-    });
+  it.each`
+  text | expected
+  ${'aab'} | ${'a'}
+  ${'abbba'} | ${'b'}
+  ${'a  b  a'} | ${' '}
+  ${'aabb'} | ${'a'}
+  ${''} | ${''}
+  ${'cCbbaAa'} | ${'a'}
+  ${'Duda, da? DA!'} | ${'d'}
+  `('popularLetter: should return correct result', async ({text, expected}) => {
+
+    const result = popularLetter(text);
+    expect(result).toEqual(expected);
   });
 })
